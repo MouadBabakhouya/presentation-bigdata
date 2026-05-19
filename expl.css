@@ -1,0 +1,39 @@
+
+/* Explanations */
+.arch-explanation {
+    position: absolute;
+    width: 130px;
+    font-size: 0.8rem;
+    color: var(--light);
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--primary);
+    padding: 0.6rem;
+    border-radius: 8px;
+    text-align: center;
+    bottom: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.arch-explanation::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: var(--primary);
+    transform: translateX(-50%);
+}
+
+.arch-box.explain-bottom .arch-explanation {
+    bottom: auto;
+    top: calc(100% + 20px);
+}
+
+.arch-box.explain-bottom .arch-explanation::after {
+    top: auto;
+    bottom: 100%;
+}

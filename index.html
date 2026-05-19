@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenance - Plateforme Big Data Automobile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 0 : Scan Me -->
+        <section class="slide active" id="slide-0" style="text-align: center;">
+            <div class="glass-card title-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <h1 class="gradient-text" style="font-size: 4rem;">Scannez-moi !</h1>
+                <p style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 3rem;">Suivez la présentation en direct sur votre appareil</p>
+                
+                <div class="qr-container" style="background: white; padding: 1rem; border-radius: 16px; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);">
+                    <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=http://10.5.0.2:8080" alt="QR Code" width="300" height="300">
+                </div>
+
+                <p style="margin-top: 3rem; font-family: 'Space Grotesk', monospace; font-size: 1.5rem; background: rgba(0,0,0,0.4); padding: 10px 20px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <i class="fas fa-link" style="color: var(--secondary);"></i> <a href="http://10.5.0.2:8080" id="presentation-link" target="_blank" style="color: var(--light); text-decoration: none; border-bottom: 1px dashed var(--primary);">http://10.5.0.2:8080</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 1 -->
+        <section class="slide" id="slide-1">
+            <div class="glass-card title-card" style="padding: 3rem;">
+                <div class="layout-split">
+                    <div class="split-left" style="text-align: left; padding: 0;">
+                        <div class="badge" style="margin-bottom: 1rem;">Soutenance de Stage</div>
+                        <h1 class="gradient-text" style="font-size: 3.5rem; text-align: left;">Plateforme Big Data</h1>
+                        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; line-height: 1.4;">Analyse et Prédiction du Marché Automobile Marocain</h2>
+                        <div class="separator" style="margin: 1.5rem 0;"></div>
+                        <div class="student-info">
+                            <p class="name"><i class="fas fa-user-graduate"></i> Étudiant : Mouad Babakhouya</p>
+                            <p class="encadrant"><i class="fas fa-user-tie"></i> Encadrant : ELMOUDEN ABDELAZIZ</p>
+                            <p class="school"><i class="fas fa-university"></i> CMC Casablanca-Settat (Diplôme 2ème année)</p>
+                            <p class="year"><i class="fas fa-calendar-alt"></i> Année universitaire : 2025/2026</p>
+                        </div>
+                    </div>
+                    <div class="split-right">
+                        <img src="assets/hero_car.png" class="slide-img" style="max-height: 400px;" alt="Hero">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2 -->
+        <section class="slide" id="slide-2">
+            <h2 class="slide-title">Contexte et Problématique</h2>
+            <div class="glass-card content-card layout-split" style="align-items: flex-start;">
+                <div class="split-left" style="flex: 1.5; padding: 0;">
+                    <ul class="animated-list detailed-list">
+                        <li><i class="fas fa-chart-line icon-accent"></i> 
+                            <div>
+                                <strong>Croissance exponentielle du parc d'occasion</strong>
+                                <p>Le marché automobile marocain de l'occasion est en plein essor, accentué par les contraintes économiques actuelles et l'inflation des véhicules neufs.</p>
+                            </div>
+                        </li>
+                        <li><i class="fas fa-network-wired icon-accent"></i> 
+                            <div>
+                                <strong>Fragmentation extrême de l'information</strong>
+                                <p>Les annonces sont éparpillées sur plusieurs plateformes (Avito, Moteur.ma), rendant la collecte et la comparaison manuelles impossibles.</p>
+                            </div>
+                        </li>
+                        <li><i class="fas fa-balance-scale-left icon-accent"></i> 
+                            <div>
+                                <strong>Asymétrie d'information flagrante</strong>
+                                <p>Les vendeurs professionnels maîtrisent les tendances de prix, tandis que les acheteurs particuliers peinent à évaluer la juste valeur d'un véhicule.</p>
+                            </div>
+                        </li>
+                        <li><i class="fas fa-search-dollar icon-accent"></i> 
+                            <div>
+                                <strong>Absence de régulation des prix</strong>
+                                <p>Les fluctuations irrationnelles et la spéculation nécessitent la création d'un outil d'analyse centralisé, transparent et prédictif.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-right" style="flex: 1;">
+                    <img src="assets/context_ill.png" class="slide-img" style="height: 100%;" alt="Context">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3 -->
+        <section class="slide" id="slide-3">
+            <h2 class="slide-title">Objectifs du Projet</h2>
+            <div class="glass-card content-card layout-split">
+                <div class="split-left" style="flex: 1; padding: 0;">
+                    <img src="assets/objectives_ill.png" class="slide-img" alt="Objectives">
+                </div>
+                <div class="split-right" style="flex: 1.5;">
+                    <div class="grid-2-col" style="gap: 1.5rem;">
+                        <div class="goal-item" style="padding: 1.5rem;">
+                            <div class="goal-icon"><i class="fas fa-robot"></i></div>
+                            <h3>Automatisation Robuste</h3>
+                            <p>Déployer des crawlers capables d'extraire massivement et quotidiennement les annonces sans blocage technique.</p>
+                        </div>
+                        <div class="goal-item" style="padding: 1.5rem;">
+                            <div class="goal-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <h3>Temps Réel (Streaming)</h3>
+                            <p>Analyser les flux de données dès leur publication pour capter les tendances immédiates du marché.</p>
+                        </div>
+                        <div class="goal-item" style="padding: 1.5rem;">
+                            <div class="goal-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Modélisation Prédictive</h3>
+                            <p>Concevoir un algorithme d'IA capable d'estimer avec précision le prix d'un véhicule selon ses attributs (kilométrage, année, etc.).</p>
+                        </div>
+                        <div class="goal-item" style="padding: 1.5rem;">
+                            <div class="goal-icon"><i class="fas fa-chart-pie"></i></div>
+                            <h3>Aide à la Décision</h3>
+                            <p>Offrir des tableaux de bord interactifs (Power BI) pour démocratiser l'information et orienter les décisions d'achat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4 -->
+        <section class="slide" id="slide-4">
+            <h2 class="slide-title">Architecture Technique</h2>
+            <div class="glass-card content-card transparent-bg">
+                <div class="arch-wrapper">
+                    <!-- Top Row -->
+                    <div class="arch-step">
+                        <div class="arch-box"><i class="fas fa-globe"></i> Avito.ma<br>Moteur.ma
+                            <div class="arch-explanation">Sources des annonces.</div>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                        <div class="arch-box" style="border-color: #43B02A;"><i class="fas fa-code" style="color:#43B02A;"></i> Selenium
+                            <div class="arch-explanation">Extraction automatisée.</div>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                        <div class="arch-box" style="border-color: #017CEE;"><i class="fas fa-wind" style="color:#017CEE;"></i> Airflow DAG
+                            <div class="arch-explanation">Orchestration des tâches.</div>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                        <div class="arch-box" style="border-color: #FFF;"><i class="fas fa-project-diagram" style="color:#FFF;"></i> Kafka
+                            <div class="arch-explanation">Streaming sans perte.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Middle connector -->
+                    <div class="arch-connector-right">
+                        <div class="arch-arrow"><i class="fas fa-long-arrow-alt-down"></i></div>
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="arch-step bottom-step">
+                        <div class="cassandra-container">
+                            <div class="arch-box" style="border-color: #1287B1;"><i class="fas fa-eye" style="color:#1287B1;"></i> Cassandra
+                                <div class="arch-explanation">Stockage NoSQL massif.</div>
+                            </div>
+                            <div class="split-arrows">
+                                <svg width="120" height="40" viewBox="0 0 120 40">
+                                    <path d="M 60 0 L 60 15 L 15 15 L 15 35" fill="none" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
+                                    <path d="M 60 0 L 60 15 L 105 15 L 105 35" fill="none" stroke="var(--primary)" stroke-width="2" marker-end="url(#arrow)"/>
+                                    <defs>
+                                        <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse">
+                                            <path d="M 0 0 L 6 3 L 0 6 z" fill="var(--primary)" />
+                                        </marker>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="split-nodes">
+                                <div class="arch-box explain-bottom" style="border-color: #F2C811; min-width: 110px; padding: 0.8rem;"><i class="fas fa-chart-bar" style="color:#F2C811; font-size: 1.5rem;"></i> Power BI
+                                    <div class="arch-explanation">Tableaux de bord interactifs.</div>
+                                </div>
+                                <div class="arch-box explain-bottom" style="border-color: #FF6C37; min-width: 110px; padding: 0.8rem;"><i class="fas fa-brain" style="color:#FF6C37; font-size: 1.5rem;"></i> ML Model
+                                    <div class="arch-explanation">Prédiction de la valeur.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-long-arrow-alt-left"></i></div>
+                        <div class="arch-box explain-bottom" style="border-color: #E25A1C;"><i class="fas fa-bolt" style="color:#E25A1C;"></i> Apache Spark
+                            <div class="arch-explanation">Nettoyage distribué.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5 -->
+        <section class="slide" id="slide-5">
+            <h2 class="slide-title">Pipeline de Données</h2>
+            <div class="glass-card content-card" style="padding-top: 1rem;">
+                <img src="assets/pipeline_ill.png" class="slide-img" style="height: 180px; width: 100%; object-fit: cover; margin-bottom: 2rem;" alt="Pipeline">
+                <div class="pipeline-container detailed-pipeline">
+                    <div class="pipeline-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Ingestion</h3>
+                            <p>Scripts Selenium simulant le comportement humain pour extraire le texte, les prix et caractéristiques sans blocage.</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-connector"><i class="fas fa-chevron-right"></i></div>
+                    <div class="pipeline-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Orchestration & Streaming</h3>
+                            <p>Airflow planifie les tâches quotidiennes. Kafka gère les files d'attente à haut débit pour éviter la perte de données.</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-connector"><i class="fas fa-chevron-right"></i></div>
+                    <div class="pipeline-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Traitement Distribué</h3>
+                            <p>Nettoyage intensif via Spark (valeurs nulles, doublons) et transformation des données brutes en format exploitable.</p>
+                        </div>
+                    </div>
+                    <div class="pipeline-connector"><i class="fas fa-chevron-right"></i></div>
+                    <div class="pipeline-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Stockage NoSQL</h3>
+                            <p>Insertion dans Cassandra, choisie pour sa haute disponibilité et ses excellentes performances en écriture massive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6 -->
+        <section class="slide" id="slide-6">
+            <h2 class="slide-title">Machine Learning et Prédiction</h2>
+            <div class="glass-card content-card layout-split" style="align-items: stretch;">
+                <div class="split-left" style="text-align: left; padding: 0; display: flex; flex-direction: column; justify-content: center;">
+                    
+                    <p style="font-size: 1.2rem; line-height: 1.6; color: var(--light); margin-bottom: 2rem; padding: 1.5rem; background: rgba(0, 242, 254, 0.05); border-left: 4px solid var(--primary); border-radius: 8px;">
+                        Pour garantir la reproductibilité et la stabilité de nos prédictions, nous avons configuré l'environnement ML avec rigueur.
+                    </p>
+
+                    <div style="margin-top: 1rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--secondary);">Variables Clés (Features)</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="feature-card" style="background: rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 1rem; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fas fa-car" style="font-size: 2rem; color: var(--primary);"></i>
+                                <span style="font-size: 1.1rem; font-weight: bold;">Modèle & Marque</span>
+                            </div>
+                            <div class="feature-card" style="background: rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 1rem; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fas fa-calendar-day" style="font-size: 2rem; color: var(--primary);"></i>
+                                <span style="font-size: 1.1rem; font-weight: bold;">Année (Circulation)</span>
+                            </div>
+                            <div class="feature-card" style="background: rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 1rem; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fas fa-road" style="font-size: 2rem; color: var(--primary);"></i>
+                                <span style="font-size: 1.1rem; font-weight: bold;">Kilométrage</span>
+                            </div>
+                            <div class="feature-card" style="background: rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 1rem; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fas fa-gas-pump" style="font-size: 2rem; color: var(--primary);"></i>
+                                <span style="font-size: 1.1rem; font-weight: bold;">Carburant & Puissance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="split-right" style="flex: 1.2;">
+                    <!-- MAC Code Window -->
+                    <div class="mac-window">
+                        <div class="mac-header">
+                            <span class="mac-dot" style="background: #ff5f56;"></span>
+                            <span class="mac-dot" style="background: #ffbd2e;"></span>
+                            <span class="mac-dot" style="background: #27c93f;"></span>
+                            <span class="mac-title">train_model.py</span>
+                        </div>
+                        <div class="mac-body">
+<pre><code><span class="syn-kw">import</span> <span class="syn-var">logging</span>
+<span class="syn-kw">import</span> <span class="syn-var">os</span>
+
+<span class="syn-com"># Configure logging</span>
+<span class="syn-var">logging</span>.<span class="syn-func">basicConfig</span>(<span class="syn-var">level</span>=<span class="syn-var">logging</span>.INFO)
+<span class="syn-var">logger</span> = <span class="syn-var">logging</span>.<span class="syn-func">getLogger</span>(__name__)
+
+<span class="syn-kw">def</span> <span class="syn-func">main</span>():
+    <span class="syn-com"># Set environment variables</span>
+    <span class="syn-var">os</span>.environ[<span class="syn-str">"TF_CPP_MIN_LOG_LEVEL"</span>] = <span class="syn-str">"2"</span>
+    <span class="syn-var">os</span>.environ[<span class="syn-str">"JAVA_OPTS"</span>] = <span class="syn-str">"--illegal-access=deny"</span>
+
+    <span class="syn-com"># Import dependencies inside main to avoid loading during DAG parsing</span>
+    <span class="syn-kw">from</span> pyspark.sql <span class="syn-kw">import</span> SparkSession
+    <span class="syn-kw">import</span> pandas <span class="syn-kw">as</span> pd
+    <span class="syn-kw">import</span> numpy <span class="syn-kw">as</span> np
+    <span class="syn-kw">from</span> tensorflow.keras.models <span class="syn-kw">import</span> Sequential, load_model
+    <span class="syn-kw">from</span> tensorflow.keras.layers <span class="syn-kw">import</span> Dense, Dropout, BatchNormalization, LeakyReLU
+    <span class="syn-kw">from</span> tensorflow.keras.callbacks <span class="syn-kw">import</span> EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+    <span class="syn-kw">from</span> tensorflow.keras.optimizers <span class="syn-kw">import</span> Adam
+    <span class="syn-kw">from</span> tensorflow.keras.regularizers <span class="syn-kw">import</span> l1_l2
+    <span class="syn-kw">from</span> sklearn.metrics <span class="syn-kw">import</span> mean_squared_error, mean_absolute_error, r2_score
+    <span class="syn-kw">from</span> sklearn.preprocessing <span class="syn-kw">import</span> RobustScaler, LabelEncoder
+    <span class="syn-kw">from</span> sklearn.model_selection <span class="syn-kw">import</span> KFold
+    <span class="syn-kw">import</span> tensorflow <span class="syn-kw">as</span> tf
+    <span class="syn-kw">import</span> pickle
+
+    <span class="syn-com"># Set random seeds for reproducibility</span>
+    <span class="syn-var">np</span>.random.<span class="syn-func">seed</span>(<span class="syn-num">42</span>)
+    <span class="syn-var">tf</span>.random.<span class="syn-func">set_seed</span>(<span class="syn-num">42</span>)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7 -->
+        <section class="slide" id="slide-7">
+            <h2 class="slide-title">Résultats et Insights</h2>
+            <div class="glass-card content-card layout-split" style="align-items: center;">
+                <div class="split-left" style="flex: 1.5; padding: 0;">
+                    <div class="results-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="result-card" style="padding: 1.5rem;">
+                            <i class="fas fa-map-marked-alt text-gradient" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                            <h3>Cartographie des Prix</h3>
+                            <p>Visualisation claire des disparités de prix moyens par ville et région.</p>
+                        </div>
+                        <div class="result-card" style="padding: 1.5rem;">
+                            <i class="fas fa-chart-line text-gradient" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                            <h3>Courbe de Décote</h3>
+                            <p>Analyse de la dépréciation selon l'âge et le kilométrage accumulé.</p>
+                        </div>
+                        <div class="result-card" style="padding: 1.5rem;">
+                            <i class="fas fa-exclamation-triangle text-gradient" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                            <h3>Détection d'Anomalies</h3>
+                            <p>Mise en évidence immédiate des annonces suspectes (fraudes potentielles).</p>
+                        </div>
+                        <div class="result-card" style="padding: 1.5rem;">
+                            <i class="fas fa-tachometer-alt text-gradient" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                            <h3>Tableaux Power BI</h3>
+                            <p>Interface intuitive permettant aux acheteurs de filtrer le marché en temps réel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-right" style="flex: 1;">
+                    <img src="assets/results_ill.png" class="slide-img" style="height: 100%; object-fit: cover;" alt="Results">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8 (Power BI) -->
+        <section class="slide" id="slide-8">
+            <h2 class="slide-title">Tableaux de Bord Interactifs (Power BI)</h2>
+            <div class="glass-card content-card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1rem; flex: 1;">
+                    <div style="background: white; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border: 2px solid var(--glass-border);">
+                        <img src="assets/pbi_villes.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Top 10 Villes">
+                    </div>
+                    <div style="background: white; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border: 2px solid var(--glass-border);">
+                        <img src="assets/pbi_marques.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Prix Moyen par Marque">
+                    </div>
+                    <div style="background: white; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border: 2px solid var(--glass-border);">
+                        <img src="assets/pbi_modeles.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Top 10 Modèles">
+                    </div>
+                    <div style="background: white; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border: 2px solid var(--glass-border);">
+                        <img src="assets/pbi_carburant.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Répartition Carburant">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9 -->
+        <section class="slide" id="slide-9">
+            <div class="glass-card title-card conclusion-card" style="width: 100%; max-width: 1200px; padding: 3rem;">
+                <h1 class="gradient-text" style="font-size: 4rem;">Bilan & Perspectives</h1>
+                <p class="subtitle" style="font-size: 1.3rem; max-width: 90%; margin: 1rem auto 2rem;">Ce projet a démontré la viabilité d'un système Big Data de bout en bout, capable de transformer des données brutes hétérogènes en prédictions actionnables pour le marché automobile marocain.</p>
+                
+                <div class="grid-2-col" style="margin-top: 1rem; width: 100%; text-align: left; gap: 2rem;">
+                    <div class="goal-item" style="padding: 2rem; background: rgba(74, 222, 128, 0.05); border-color: rgba(74, 222, 128, 0.3);">
+                        <h3 style="color: #4ade80; font-size: 1.6rem; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> Acquis du Projet</h3>
+                        <ul class="animated-list detailed-list" style="margin-top: 1rem;">
+                            <li><i class="fas fa-check" style="color: #4ade80; font-size: 1.2rem;"></i> <p>Pipeline robuste et 100% automatisé (0 intervention manuelle)</p></li>
+                            <li><i class="fas fa-check" style="color: #4ade80; font-size: 1.2rem;"></i> <p>Modèle prédictif performant adapté au contexte local</p></li>
+                            <li><i class="fas fa-check" style="color: #4ade80; font-size: 1.2rem;"></i> <p>Transparence du marché via des tableaux de bord interactifs</p></li>
+                        </ul>
+                    </div>
+                    <div class="goal-item" style="padding: 2rem; background: rgba(0, 242, 254, 0.05); border-color: rgba(0, 242, 254, 0.3);">
+                        <h3 style="color: var(--primary); font-size: 1.6rem; margin-bottom: 1rem;"><i class="fas fa-rocket"></i> Évolutions Futures</h3>
+                        <ul class="animated-list detailed-list" style="margin-top: 1rem;">
+                            <li><i class="fas fa-arrow-right" style="color: var(--primary); font-size: 1.2rem;"></i> <p>Intégration du Deep Learning pour analyser les photos des véhicules</p></li>
+                            <li><i class="fas fa-arrow-right" style="color: var(--primary); font-size: 1.2rem;"></i> <p>Scraping des réseaux sociaux (Facebook Marketplace, Instagram)</p></li>
+                            <li><i class="fas fa-arrow-right" style="color: var(--primary); font-size: 1.2rem;"></i> <p>Création d'une application Mobile et d'une API de cotation</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="thank-you" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2); width: 100%;">
+                    <h2 style="font-size: 2.5rem;"><i class="fas fa-hands-helping" style="color: var(--secondary);"></i> Merci de votre attention</h2>
+                    <p style="font-size: 1.5rem; color: var(--text-muted); margin-top: 0.5rem;">Place aux Questions & Réponses</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="controls">
+        <div class="slide-counter"><span id="current-slide">1</span> / <span id="total-slides">9</span></div>
+        <div class="nav-buttons">
+            <button id="prev-btn" class="nav-btn" disabled><i class="fas fa-chevron-left"></i></button>
+            <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
